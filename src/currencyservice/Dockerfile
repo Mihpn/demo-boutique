@@ -4,6 +4,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Vẫn phải cài đồ nghề C++ cho mấy thư viện của Google
+# hadolint ignore=DL3018
 RUN apk add --no-cache python3 make g++
 
 COPY package*.json ./

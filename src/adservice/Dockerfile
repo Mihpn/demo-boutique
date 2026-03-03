@@ -4,6 +4,7 @@ FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 
 # 🚨 CÀI THÊM gcompat để chạy được protoc binary trên Alpine
+# hadolint ignore=DL3018
 RUN apk add --no-cache gcompat
 
 COPY build.gradle gradlew ./

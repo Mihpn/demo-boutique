@@ -1,6 +1,6 @@
 # Stage 1: Build the application
 # Sử dụng Alpine để có môi trường build nhẹ nhưng đầy đủ công cụ Go
-FROM golang:1.25-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 

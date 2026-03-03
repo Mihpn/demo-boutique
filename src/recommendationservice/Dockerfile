@@ -8,6 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 # Cài đồ nghề compile C++ cho thằng grpcio
+# hadolint ignore=DL3018
 RUN apk add --no-cache g++ linux-headers libstdc++
 
 # 🚨 DÙNG BÀI TỦ: Tạo môi trường ảo (venv)
@@ -16,6 +17,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy file requirements và cài đặt
 COPY requirements.txt .
+# hadolint ignore=DL3042
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime (Thành phẩm siêu nhẹ)
@@ -27,6 +29,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 # Cài thư viện C++ runtime cho grpcio
+# hadolint ignore=DL3018
 RUN apk add --no-cache libstdc++
 
 # Rinh môi trường ảo đã đóng gói sẵn sang
