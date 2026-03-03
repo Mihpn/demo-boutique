@@ -9,7 +9,7 @@ RUN go mod download
 
 # Copy toàn bộ code (Bao gồm cả file products.json)
 COPY . .
-
+RUN go mod tidy
 # Ép cân và build ra cục binary tên là 'server'
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /app/server .
 

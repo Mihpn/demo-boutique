@@ -10,7 +10,7 @@ RUN go mod download
 
 # Copy toàn bộ mã nguồn vào để build
 COPY . .
-
+RUN go mod tidy
 # Build file thực thi (Binary)
 # -ldflags="-s -w" giúp xóa bỏ debug info, làm file cực nhẹ
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /app/frontend-binary .

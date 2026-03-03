@@ -1,6 +1,6 @@
 module github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice
 
-go 1.22
+go 1.24
 
 
 

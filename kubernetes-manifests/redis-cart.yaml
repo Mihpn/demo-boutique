@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: redis-cart-online-boutique
   namespace: online-boutique
-  labels:
-    app: redis-cart-online-boutique
 spec:
   selector:
     matchLabels:
@@ -21,27 +19,15 @@ spec:
         runAsUser: 1000
       containers:
       - name: redis
+        image: redis:alpine
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
-            drop:
-              - ALL
+            drop: [-ALL]
           privileged: false
           readOnlyRootFilesystem: true
-        image: redis:alpine
         ports:
         - containerPort: 6379
-        readinessProbe:
-          periodSeconds: 5
-          tcpSocket:
-            port: 6379
-        livenessProbe:
-          periodSeconds: 5
-          tcpSocket:
-            port: 6379
-        volumeMounts:
-        - mountPath: /data
-          name: redis-data
         resources:
           requests:
             cpu: 70m
@@ -49,17 +35,18 @@ spec:
           limits:
             cpu: 125m
             memory: 256Mi
+        volumeMounts:
+        - mountPath: /data
+          name: redis-data
       volumes:
       - name: redis-data
-        emptyDir: {} # 🚨 Tạm thời dùng emptyDir cho nhanh, tối mai mình xử lý NFS sau
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: redis-cart-online-boutique
   namespace: online-boutique
-  labels:
-    app: redis-cart-online-boutique
 spec:
   type: ClusterIP
   selector:
@@ -67,4 +54,4 @@ spec:
   ports:
   - name: tcp-redis
     port: 6379
-    target_port: 6379
+    targetPort: 6379 # 🚨 Đã fix từ target_port thành targetPort

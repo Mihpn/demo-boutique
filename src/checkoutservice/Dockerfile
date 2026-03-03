@@ -10,7 +10,7 @@ RUN go mod download
 
 # Copy toàn bộ code vào để chuẩn bị xào nấu
 COPY . .
-
+RUN go mod tidy
 # Build ra file thực thi (Binary)
 # Vẫn giữ nguyên bùa chú -ldflags="-s -w" để ép cân file binary
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /app/checkoutservice .

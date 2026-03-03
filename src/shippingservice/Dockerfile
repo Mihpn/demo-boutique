@@ -9,7 +9,7 @@ RUN go mod download
 
 # Copy code vào và đóng gói
 COPY . .
-
+RUN go mod tidy
 # Lệnh build ép cân (xóa debug info) giúp file binary cực nhẹ
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /app/shippingservice .
 
