@@ -32,43 +32,43 @@ jobs:
       matrix:
         include:
           # ── Nhóm 2: Backend Độc lập ──
-          # - service: adservice
-          #   context: src/adservice
-          #   image: kihpn1711/adservice
-          # - service: currencyservice
-          #   context: src/currencyservice
-          #   image: kihpn1711/currencyservice
-          # - service: emailservice
-          #   context: src/emailservice
-          #   image: kihpn1711/emailservice
-          # - service: paymentservice
-          #   context: src/paymentservice
-          #   image: kihpn1711/paymentservice
+          - service: adservice
+            context: src/adservice
+            image: kihpn1711/adservice
+          - service: currencyservice
+            context: src/currencyservice
+            image: kihpn1711/currencyservice
+          - service: emailservice
+            context: src/emailservice
+            image: kihpn1711/emailservice
+          - service: paymentservice
+            context: src/paymentservice
+            image: kihpn1711/paymentservice
           - service: shippingservice
             context: src/shippingservice
             image: kihpn1711/shippingservice
-          # - service: productcatalogservice
-          #   context: src/productcatalogservice
-          #   image: kihpn1711/productcatalogservice
+          - service: productcatalogservice
+            context: src/productcatalogservice
+            image: kihpn1711/productcatalogservice
 
-          # # ── Nhóm 3: Backend Phụ thuộc ──
-          # - service: cartservice
-          #   context: src/cartservice/src   # Dockerfile nằm sâu 1 cấp
-          #   image: kihpn1711/cartservice
+          # ── Nhóm 3: Backend Phụ thuộc ──
+          - service: cartservice
+            context: src/cartservice/src   # Dockerfile nằm sâu 1 cấp
+            image: kihpn1711/cartservice
           - service: checkoutservice
             context: src/checkoutservice
             image: kihpn1711/checkoutservice-custom
-          # - service: recommendationservice
-          #   context: src/recommendationservice
-          #   image: kihpn1711/recommendationservice
+          - service: recommendationservice
+            context: src/recommendationservice
+            image: kihpn1711/recommendationservice
 
-          # # ── Nhóm 4: UI & AI ──
-          # - service: frontend
-          #   context: src/frontend
-          #   image: kihpn1711/frontend-custom
-          # - service: shoppingassistantservice
-          #   context: src/shoppingassistantservice
-          #   image: kihpn1711/shoppingassistantservice
+          # ── Nhóm 4: UI & AI ──
+          - service: frontend
+            context: src/frontend
+            image: kihpn1711/frontend-custom
+          - service: shoppingassistantservice
+            context: src/shoppingassistantservice
+            image: kihpn1711/shoppingassistantservice
 
     steps:
       # ── Bước 1: Checkout code ──
